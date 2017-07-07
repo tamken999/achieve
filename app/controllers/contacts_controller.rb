@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
+  
   def index
-    redirect_to controller: :contacts, action: :new
+    @contacts = Contact.new
   end
   
   def new
@@ -16,7 +17,7 @@ class ContactsController < ApplicationController
     if @contacts.save
       redirect_to contacts_path, notice: "お問い合わせありがとうございました！"
     else
-      render action: 'new'
+      render :new
     end
   end
   
